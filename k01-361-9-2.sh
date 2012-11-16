@@ -6,36 +6,36 @@ echo "Группа: K01-361"
 echo "Описание: Данная программа выводит права пользователя к файлу"
 echo ""
 echo "Начать выполнение? (y/n): ";
-yesno='y'
-while [ $yesno = "y" -o $yesno = "Y" ]; do                                             # проверка на наличие файла
-                                        read yesno; 
-                                        if [ $yesno = "y" -o $yesno = "Y" ]; then
+yn='y'
+while [ $yn = "y" -o $yn = "Y" ]; do                                             # проверка на наличие файла
+                                        read yn; 
+                                        if [ $yn = "y" -o $yn = "Y" ]; then
 	clear
 	echo "Введите путь к файлу:"
 	read f
 	clear
 	while ! [ -e $f ]; do echo "Такого файла не существует. Повторить? (y/n)"
-		           read yesno
-		           if [ $yesno = "y" -o $yesno = "Y" ]; then
+		           read yn
+		           if [ $yn = "y" -o $yn = "Y" ]; then
 		                                                clear
 		                                                echo "Введите путь к файлу:"
 		                                                read f
-		           elif [ $yesno = "n" -o $yesno = "N" ]; then
+		           elif [ $yn = "n" -o $yn = "N" ]; then
 		                                                  clear  
 		                                                  echo "Программа завершена!"
 								  echo "Разработчик: Кустов Даниил"
 								  echo "Группа: K01-361"
 		                                                  exit 0
 		           else 
-		           while ! [ $yesno = "n" -o $yesno = "N" -o $yesno = "y" -o $yesno = "Y" ]
+		           while ! [ $yn = "n" -o $yn = "N" -o $yn = "y" -o $yn = "Y" ]
 		                            do
 		                            echo "Ошибка ввода! Введите y/n:"
-		                            read yesno
-		                            if [ $yesno = "y" -o $yesno = "Y" ]; then
+		                            read yn
+		                            if [ $yn = "y" -o $yn = "Y" ]; then
 					    clear
 		                            echo "Введите путь к файлу:"
 		                            read f
-		                            elif [ $yesno = "n" -o $yesno = "N" ]; then 
+		                            elif [ $yn = "n" -o $yn = "N" ]; then 
 										   clear
 		                                                                   echo "Программа завершена!"
 									           echo "Разработчик: Кустов Даниил"
@@ -51,34 +51,34 @@ while [ $yesno = "y" -o $yesno = "Y" ]; do                                      
 	echo "Введите имя пользователя"
 	read u
 	clear 
-	while ! grep -q $u /etc/passwd; do                                                 # проверка на наличие пользователя
+	while ! [ $(getent passwd $u ) ]; do                                                 # проверка на наличие пользователя
                            echo "Такого пользователя не существует. Повторить? (y/n)"
-		           read yesno
-		           if [ $yesno = "y" -o $yesno = "Y" ]; then
+		           read yn
+		           if [ $yn = "y" -o $yn = "Y" ]; then
 		                                                clear
 		                                                echo "Введите имя пользователя:"
 		                                                read u								
-		           elif [ $yesno = "n" -o $yesno = "N" ]; then
+		           elif [ $yn = "n" -o $yn = "N" ]; then
 		                                                  clear  
 		                                                  echo "Программа завершена!"
 								  echo "Разработчик: Кустов Даниил"
 								  echo "Группа: K01-361"
 		                                                  exit 0
 		           else 
-		           while ! [ $yesno = "n" -o $yesno = "N" -o $yesno = "y" -o $yesno = "Y" ]
+		           while ! [ $yn = "n" -o $yn = "N" -o $yn = "y" -o $yn = "Y" ]
 		                            do
 		                            echo "Ошибка ввода! Введите y/n:"
-		                            read yesno
-		                            if [ $yesno = "y" -o $yesno = "Y" ]; then
+		                            read yn
+		                            if [ $yn = "y" -o $yn = "Y" ]; then
 					    clear
 		                            echo "Введите имя пользователя:"
 		                            read u
-		                            elif [ $yesno = "n" -o $yesno = "N" ]; then 
+		                            elif [ $yn = "n" -o $yn = "N" ]; then 
 		                                                                   echo "Программа завершена!"
 									           echo "Разработчик: Кустов Даниил"
 									           echo "Группа: K01-361"
 		                                                                   exit 0
-		                                                                   
+
 		                            fi
 		          done
 		          fi
@@ -133,12 +133,12 @@ while [ $yesno = "y" -o $yesno = "Y" ]; do                                      
 	if [ $a == "---" ]; then echo "Данный пользователь может: НИЧЕГО"
 	fi
         echo "Повторить? (y/n): ";
-	yesno=y
-				elif [ $yesno = "n" -o $yesno = "N" ]; then             
+	yn=y
+				elif [ $yn = "n" -o $yn = "N" ]; then             
 						echo "Прекращено пользователем."
 						clear
 				else  echo "Ошибка ввода! Введите y/n:"
-				      yesno=y
+				      yn=y
 				fi
 done
 clear
