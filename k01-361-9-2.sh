@@ -92,7 +92,7 @@ while [ $yn = "y" -o $yn = "Y" ]; do                                            
 	string2=$u
 	longu=${#string2}
 	length1=$longu
-	y=${string1:14:length1}
+	y=${string1:15:length1}
 	grp=$(groups $u)           # группа нашего пользователя
 	string3=$grp
 	lgg=${#string3}
