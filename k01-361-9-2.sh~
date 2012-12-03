@@ -105,8 +105,8 @@ while [ $yn = "y" -o $yn = "Y" ]; do                                            
 	string2=$rwx
 	position2=$m
 	a=${string2:position2:3}
-	echo "Файл: $FILENAME"
-	echo "Пользователь: $USER"
+	echo "Файл $FILENAME"
+	echo "Пользователь $USER"
 	if [ $a == "rwx" ]; then echo "Полномочия: ЧИТАТЬ/ПИСАТЬ/ИСПОЛНЯТЬ"
 	fi
 	if [ $a == "rw-" ]; then echo "Полномочия: ЧИТАТЬ/ПИСАТЬ"
